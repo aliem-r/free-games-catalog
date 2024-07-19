@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Game } from "./games";
+import { Game, GameDetails } from "./games";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -30,5 +30,23 @@ export const isGameCardValid = async (game: Game) => {
         game.developer &&
         game.short_description &&
         game.genre
+    );
+};
+
+export const isGameDetailsValid = async (game: GameDetails) => {
+    return !!(
+        game.description &&
+        game.game_url &&
+        game.release_date &&
+        game.minimum_system_requirements &&
+        game.minimum_system_requirements.os &&
+        game.minimum_system_requirements.processor &&
+        game.minimum_system_requirements.memory &&
+        game.minimum_system_requirements.graphics &&
+        game.minimum_system_requirements.storage &&
+        game.screenshots.length > 2 &&
+        game.screenshots.map(
+            async (screenshot) => await imageExists(screenshot.image)
+        )
     );
 };

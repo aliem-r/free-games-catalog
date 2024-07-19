@@ -38,3 +38,11 @@ export const fetchGames = async (genre?: string) => {
     const games = await response.json();
     return response.status === 200 ? (games as Game[]) : [];
 };
+
+export const getSingleGame = async (gameId: number) => {
+    const response = await fetch(
+        `https://www.freetogame.com/api/game?id=${gameId}`
+    );
+    const game = await response.json();
+    return response.status === 200 ? (game as GameDetails) : "";
+};

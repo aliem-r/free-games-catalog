@@ -3,7 +3,6 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
-import MainContainer from "@/components/MainContainer";
 
 const font = Space_Grotesk({ subsets: ["latin"] });
 
@@ -29,7 +28,7 @@ export default function RootLayout({
                 )}
             >
                 <Header />
-                <MainContainer children={children} />
+                {children}
                 <div className="min-h-10"></div>
             </body>
         </html>

@@ -1,10 +1,10 @@
-import CategoriesSidebar from "./CategoriesSidebar";
+import CategoriesSidebar from "@/components/CategoriesSidebar";
 
 type LayoutProps = {
     children: React.ReactNode;
 };
 
-export default async function MainContainer({ children }: LayoutProps) {
+export default async function Layout({ children }: LayoutProps) {
     return (
         <main className="flex gap-9">
             <div className="w-1/2 max-w-80">
